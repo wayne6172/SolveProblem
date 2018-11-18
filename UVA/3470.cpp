@@ -1,3 +1,4 @@
+// Correct
 #include <cstdio>
 
 int table[500][100];
