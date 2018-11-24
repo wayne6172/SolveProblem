@@ -8,9 +8,10 @@ int main(){
 	
 	x = 1;
 	for(i = 14;i >= 0; i--,x *= 2){
-		for(j = 0;j < 32768 / (x * 4); j += (x * 4)){
+		for(j = 0;j < 32768; j += (x * 4)){
 			for(k = 0;k < x;k++)table[j + k][i] = 0;
 			for(k = 0;k < x;k++)table[j + k + x][i] = 1;
+			if(i == 0)break;
 			for(k = 0;k < x;k++)table[j + k + x * 2][i] = 1;
 			for(k = 0;k < x;k++)table[j + k + x * 3][i] = 0;
 		}

@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-typedef unsigned long long ull;
+typedef long long lld;
 
 
-int check(ull n,ull ans){
-	ull sum = 0;
+int check(lld n,lld ans){
+	lld sum = 0;
 	while(n != 0){
 		sum += n;
 		n /= 10;
@@ -14,7 +14,7 @@ int check(ull n,ull ans){
 	else return 0;
 }
 
-int getDigit(ull n){
+int getDigit(lld n){
 	int sum = 0;
 	while(n != 0){
 		sum++;
@@ -24,10 +24,10 @@ int getDigit(ull n){
 }
 
 int main(){
-	ull n,x,y,maybe,j;
+	lld n,x,y,maybe,j;
 	int digit,i,find;
 	
-	while(scanf("%llu",&n)!=EOF){
+	while(scanf("%lld",&n)!=EOF){
 		digit = getDigit(n);
 		find = 0;
 		
@@ -43,10 +43,11 @@ int main(){
 		}
 		
 		maybe = n * ((double)y / (double)x);
+		//printf("%lld\n",maybe);
 
-		for(j = maybe - 20;j <= maybe + 10;j++){
+		for(j = maybe - 2000;j <= maybe + 1000;j++){
 			if(check(j,n)){
-				printf("%llu\n",j);
+				printf("%lld\n",j);
 				find = 1;
 				break;
 			}
