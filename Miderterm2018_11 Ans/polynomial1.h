@@ -23,8 +23,7 @@ public:
 		return;
 	}
 
-	void inputTerms(int coef, int expo)
-	{
+	void inputTerms(int coef, int expo) {
 		// modify the following code and add your code here
 		int i = 0;
 
@@ -36,8 +35,7 @@ public:
 		return;
 	}
 
-	void printArrayBasedPoly()
-	{
+	void printArrayBasedPoly() {
 		if (terms[0].coef == 0)
 			return;
 
@@ -59,8 +57,7 @@ public:
 		return;
 	}
 
-	void printArrayBasedPolyRecursively()
-	{
+	void printArrayBasedPolyRecursively() {
 		if (terms[0].coef == 0)
 			return;
 
@@ -72,9 +69,8 @@ public:
 		printArrayBasedPolyRecursively(1);
 	}
 
-	void printArrayBasedPolyRecursively(int i)
-	{
-		if (terms[i].coef == 0)
+	void printArrayBasedPolyRecursively(int i) {
+		if (terms[i].coef == 0 || i == MAX_TERMS)
 			return;
 
 		cout << " + ";
@@ -87,45 +83,46 @@ public:
 
 	}
 
-	void ArrayBasedDifferentiation()
-	{
+	void ArrayBasedDifferentiation() {
 		int i = 0, j;
-		while(terms[i].coef != 0) {
-			if(terms[i].expo != 0) {
+		while (terms[i].coef != 0 && i < MAX_TERMS) {
+			if (terms[i].expo != 0) {
 				terms[i].coef *= terms[i].expo--;
 				i++;
 			}
 			else {
 				j = i;
-				while (terms[j].coef != 0) {
+				while (terms[j].coef != 0 && j < MAX_TERMS - 1) {
 					terms[j].coef = terms[j + 1].coef;
 					terms[j].expo = terms[j + 1].expo;
 					j++;
 				}
+				terms[j].coef = terms[j].expo = 0;
 			}
 		}
 	}
 
-	void compactCopy(ArrayPolynomial &poly)
-	{
+	void compactCopy(ArrayPolynomial &poly) {
 		int i = 0, j, k;
 
-		while(poly.terms[i].coef != 0) {
+		while (poly.terms[i].coef != 0 && i < MAX_TERMS) {
 			j = 0;
 			while (terms[j].coef != 0 && terms[j].expo > poly.terms[i].expo)j++;
-			if(terms[j].expo == poly.terms[i].expo) {		//add
-				if(terms[j].coef + poly.terms[i].coef == 0) {			//delete
-					while(terms[j].coef != 0) {
+			if (terms[j].expo == poly.terms[i].expo) {		//add
+				if (terms[j].coef + poly.terms[i].coef == 0) {			//delete
+					while (terms[j].coef != 0 && j < MAX_TERMS - 1) {
 						terms[j].coef = terms[j + 1].coef;
 						terms[j].expo = terms[j + 1].expo;
 						j++;
 					}
+					terms[j].coef = 0;
+					terms[j].expo = 0;
 				}
 				else terms[j].coef += poly.terms[i].coef;
 			}
 			else {									//insert
 				k = j;
-				while (terms[k].coef != 0)k++;
+				while (terms[k].coef != 0 && k < MAX_TERMS)k++;
 				while (k != j) {
 					terms[k].coef = terms[k - 1].coef;
 					terms[k].expo = terms[k - 1].expo;
@@ -152,8 +149,7 @@ class LinkedPolynomial {
 public:
 	LinkedPolynomialTerm * polynomialTermPtr = nullptr;
 
-	void clear()
-	{
+	void clear() {
 		LinkedPolynomialTerm *tmpPtr;
 
 		while (polynomialTermPtr != nullptr) {
@@ -165,8 +161,7 @@ public:
 		return;
 	}
 
-	void inputTerms(int coef, int expo)
-	{
+	void inputTerms(int coef, int expo) {
 		LinkedPolynomialTerm *tmpPtr;
 
 		tmpPtr = new LinkedPolynomialTerm;
@@ -182,8 +177,7 @@ public:
 		return;
 	}
 
-	void printLinkBasedPoly()
-	{
+	void printLinkBasedPoly() {
 		LinkedPolynomialTerm *termPtr = polynomialTermPtr;
 
 		if (termPtr == nullptr)
@@ -211,8 +205,7 @@ public:
 		return;
 	}
 
-	void printLinkBasedPolyRecursively()
-	{
+	void printLinkBasedPolyRecursively() {
 		if (polynomialTermPtr == nullptr)
 			return;
 
@@ -224,8 +217,7 @@ public:
 		printLinkBasedPolyRecursively(polynomialTermPtr->nextTermPtr);
 	}
 
-	void printLinkBasedPolyRecursively(LinkedPolynomialTerm *currPtr)
-	{
+	void printLinkBasedPolyRecursively(LinkedPolynomialTerm *currPtr) {
 		if (currPtr == nullptr)
 			return;
 
@@ -239,13 +231,11 @@ public:
 
 	}
 
-	int computeRecursively(int x)
-	{
+	int computeRecursively(int x) {
 		return computeRecursively(x, polynomialTermPtr);
 	}
 
-	int computeRecursively(int x, LinkedPolynomialTerm *currPtr)
-	{
+	int computeRecursively(int x, LinkedPolynomialTerm *currPtr) {
 
 
 		// add yor code here
@@ -254,18 +244,17 @@ public:
 		return 0;
 	}
 
-	void LinkBasedDifferentiation()
-	{
+	void LinkBasedDifferentiation() {
 		LinkedPolynomialTerm *currPtr = polynomialTermPtr, *prePtr = nullptr;
 
-		while(currPtr != nullptr) {
-			if(currPtr->expo != 0) {
+		while (currPtr != nullptr) {
+			if (currPtr->expo != 0) {
 				currPtr->coef *= currPtr->expo--;
 				prePtr = currPtr;
 				currPtr = currPtr->nextTermPtr;
 			}
 			else {
-				if(prePtr == nullptr) {
+				if (prePtr == nullptr) {
 					polynomialTermPtr = currPtr->nextTermPtr;
 					delete currPtr;
 					currPtr = polynomialTermPtr;
@@ -280,8 +269,7 @@ public:
 
 	}
 
-	void compactCopy(LinkedPolynomial &poly)
-	{
+	void compactCopy(LinkedPolynomial &poly) {
 		LinkedPolynomialTerm *currPtr = poly.polynomialTermPtr;
 
 		while (currPtr != nullptr) {
@@ -291,16 +279,16 @@ public:
 			tmpPtr->coef = currPtr->coef;
 			tmpPtr->nextTermPtr = nullptr;
 
-			while(thisCurrPtr != nullptr && thisCurrPtr->expo > currPtr->expo) {
+			while (thisCurrPtr != nullptr && thisCurrPtr->expo > currPtr->expo) {
 				thisPrePtr = thisCurrPtr;
 				thisCurrPtr = thisCurrPtr->nextTermPtr;
 			}
 
-			if(thisPrePtr == nullptr) {		//head
-				if(thisCurrPtr == nullptr) polynomialTermPtr = tmpPtr;		//nothing
+			if (thisPrePtr == nullptr) {		//head
+				if (thisCurrPtr == nullptr) polynomialTermPtr = tmpPtr;		//nothing
 				else {
-					if(thisCurrPtr->expo == currPtr->expo) {		//add
-						if(thisCurrPtr->coef + currPtr->coef == 0) {		//delete head
+					if (thisCurrPtr->expo == currPtr->expo) {		//add
+						if (thisCurrPtr->coef + currPtr->coef == 0) {		//delete head
 							polynomialTermPtr = thisCurrPtr->nextTermPtr;
 							delete thisCurrPtr;
 						}
@@ -314,7 +302,7 @@ public:
 					}
 				}
 			}
-			else if(thisCurrPtr == nullptr) {		//tail, if this true that you can't find same expo
+			else if (thisCurrPtr == nullptr) {		//tail, if this true that you can't find same expo
 				thisPrePtr->nextTermPtr = tmpPtr;		//tail insert
 			}
 			else {				//mid
@@ -332,39 +320,9 @@ public:
 					thisPrePtr->nextTermPtr = tmpPtr;
 				}
 			}
-			
+
 			currPtr = currPtr->nextTermPtr;
 		}
 
-
-		/*
-		 while(poly.terms[i].coef != 0) {
-			j = 0;
-			while (terms[j].coef != 0 && terms[j].expo > poly.terms[i].expo)j++;
-			if(terms[j].expo == poly.terms[i].expo) {		//add
-				if(terms[j].coef + poly.terms[i].coef == 0) {			//delete
-					while(terms[j].coef != 0) {
-						terms[j].coef = terms[j + 1].coef;
-						terms[j].expo = terms[j + 1].expo;
-						j++;
-					}
-				}
-				else terms[j].coef += poly.terms[i].coef;
-			}
-			else {									//insert
-				k = j;
-				while (terms[k].coef != 0)k++;
-				while (k != j) {
-					terms[k].coef = terms[k - 1].coef;
-					terms[k].expo = terms[k - 1].expo;
-					k--;
-				}
-				terms[j].coef = poly.terms[i].coef;
-				terms[j].expo = poly.terms[i].expo;
-			}
-
-			i++;
-		}
-		 */
 	}
 };
