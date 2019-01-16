@@ -1,6 +1,7 @@
 // correct
 
 #include <cstdio>
+#include <cstdlib>
 
 int f(int n){
     if(n == 1)return 1;
