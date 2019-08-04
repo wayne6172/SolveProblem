@@ -34,4 +34,20 @@ class solution{
                 matrixT[j][i] = matrix[i][j];
 
     }
+
+    public static int[][] mult(int [][] matrix){
+        int [][] ans = new int[matrix.length][matrix.length];
+        int sum;
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix.length; j++){
+                sum = 0;
+                for(int k = 0; k < matrix.length; k++){
+                    sum += matrix[i][k] * matrix[k][j];
+                }
+                ans[i][j] = sum;
+            }
+        }
+
+        return ans;
+    }
 }
