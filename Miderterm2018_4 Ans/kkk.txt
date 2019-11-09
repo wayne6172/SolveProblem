@@ -1,0 +1,46 @@
+1.(10分)請在Miderterm2018_4.cpp中找到void accumulate(int A[], int start, int end)
+並修改陣列A使陣列A的每個元素為每個位址之前所有的加總
+
+例如A = {5,1,3,9,4}，經過accumulate後為 {5,6,9,18,22}
+
+2. 請在polynomial1.h寫以下題目
+
+2.a(15分) 請找到class ArrayPolynomial 中的 void inputTerms(int coef, int expo)並"改寫"
+使其能降冪排序，如果已有存在相同冪次，則係數相加，但若為0，該項移除
+
+例如 5 5 3 3 -5 5 4 4 3 3 7 7 0 0
+若沒寫，會是5x^5 + 3x^3 + -5x^5 + 4x^4 + 3x^3 + 7x^7
+若有寫，應該為 7x^7 + 4x^4 + 6x^3
+
+2.b(15分) 請找到class LinkedPolynomial 中修改inputTerm，使其跟 2.a 一樣，但是結構是List
+
+2.c(5分) 請找到class ArrayPolynomial 中的void printArrayBasedPolyRecursively(int i)
+以"遞迴"的方式印出當前的多項式
+
+2.d(5分) 同2.c 只是在class LinkedPolynomial 以List的方式實施
+
+2.e(5分) 請找到class ArrayPolynomial 中的int computeRecursively(int x, int i)
+以遞迴的方式將傳進來的參數x帶入多項式的x中，算出其值並回傳，i表示目前位置，初始為0
+
+2.f(5分) 同2.e 只是在class LinkedPolynomial 以List的方式實施
+
+
+3.a 與 3.b在ArrayBag.h 中找到 3.c 3.d在LinkedBag.h 中找到
+
+3.a(10分)
+請找到bool ArrayBag<ItemType>::remove(const ItemType& anEntry)
+並將ArrayBag所擁有的物品中，找出跟anEntry一樣的物品並刪除(請注意，可能不只一個)
+
+ex: 目前Bag = {"A","A","C","B","C","A","D","E"} anEntry = "A"
+會變成 {"C","B","C","D","E"}
+
+3.b(10分)
+請找到bool ArrayBag<ItemType>::remove(const ArrayBag<ItemType>& aBag)
+並將ArrayBag所擁有的物品中，找出跟aBag內"所有"一樣的物品並刪除(請注意，可能不只一個)
+
+ex: 目前Bag = {"A","A","C","B","C","A","D","E"} aBga = {"A","C","D"}
+會變成 {"B","E"}
+
+3.c(10分) 等同3.a 只是是List
+
+3.d(10分) 等同3.b 只是是List
