@@ -1,0 +1,7 @@
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\bin\Debug\Socket.exe.config
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\bin\Debug\Socket.exe
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\bin\Debug\Socket.pdb
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\obj\Debug\Socket.csprojAssemblyReference.cache
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\obj\Debug\Socket.csproj.CoreCompileInputs.cache
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\obj\Debug\Socket.exe
+D:\Programing\SolveProblem\tester\Socket\Socket\Socket\obj\Debug\Socket.pdb

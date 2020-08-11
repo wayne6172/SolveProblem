@@ -1,0 +1,76 @@
+
+StackFunc.o:     file format pe-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <push>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 20          	sub    $0x20,%rsp
+   8:	89 4d 10             	mov    %ecx,0x10(%rbp)
+   b:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 12 <push+0x12>
+  12:	8b 00                	mov    (%rax),%eax
+  14:	83 f8 63             	cmp    $0x63,%eax
+  17:	7e 1b                	jle    34 <push+0x34>
+  19:	41 b8 05 00 00 00    	mov    $0x5,%r8d
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <push+0x26>
+  26:	48 8d 0d 0c 00 00 00 	lea    0xc(%rip),%rcx        # 39 <push+0x39>
+  2d:	e8 00 00 00 00       	callq  32 <push+0x32>
+  32:	eb 01                	jmp    35 <push+0x35>
+  34:	90                   	nop
+  35:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 3c <push+0x3c>
+  3c:	8b 00                	mov    (%rax),%eax
+  3e:	8d 48 01             	lea    0x1(%rax),%ecx
+  41:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 48 <push+0x48>
+  48:	89 0a                	mov    %ecx,(%rdx)
+  4a:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 51 <push+0x51>
+  51:	48 98                	cltq   
+  53:	8b 4d 10             	mov    0x10(%rbp),%ecx
+  56:	89 0c 82             	mov    %ecx,(%rdx,%rax,4)
+  59:	48 83 c4 20          	add    $0x20,%rsp
+  5d:	5d                   	pop    %rbp
+  5e:	c3                   	retq   
+
+000000000000005f <pop>:
+  5f:	55                   	push   %rbp
+  60:	48 89 e5             	mov    %rsp,%rbp
+  63:	48 83 ec 20          	sub    $0x20,%rsp
+  67:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 6e <pop+0xf>
+  6e:	8b 00                	mov    (%rax),%eax
+  70:	85 c0                	test   %eax,%eax
+  72:	7f 1b                	jg     8f <pop+0x30>
+  74:	41 b8 0a 00 00 00    	mov    $0xa,%r8d
+  7a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 81 <pop+0x22>
+  81:	48 8d 0d 1d 00 00 00 	lea    0x1d(%rip),%rcx        # a5 <pop+0x46>
+  88:	e8 00 00 00 00       	callq  8d <pop+0x2e>
+  8d:	eb 01                	jmp    90 <pop+0x31>
+  8f:	90                   	nop
+  90:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 97 <pop+0x38>
+  97:	8b 00                	mov    (%rax),%eax
+  99:	8d 50 ff             	lea    -0x1(%rax),%edx
+  9c:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # a3 <pop+0x44>
+  a3:	89 10                	mov    %edx,(%rax)
+  a5:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # ac <pop+0x4d>
+  ac:	8b 10                	mov    (%rax),%edx
+  ae:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # b5 <pop+0x56>
+  b5:	48 63 d2             	movslq %edx,%rdx
+  b8:	8b 04 90             	mov    (%rax,%rdx,4),%eax
+  bb:	48 83 c4 20          	add    $0x20,%rsp
+  bf:	5d                   	pop    %rbp
+  c0:	c3                   	retq   
+  c1:	90                   	nop
+  c2:	90                   	nop
+  c3:	90                   	nop
+  c4:	90                   	nop
+  c5:	90                   	nop
+  c6:	90                   	nop
+  c7:	90                   	nop
+  c8:	90                   	nop
+  c9:	90                   	nop
+  ca:	90                   	nop
+  cb:	90                   	nop
+  cc:	90                   	nop
+  cd:	90                   	nop
+  ce:	90                   	nop
+  cf:	90                   	nop
